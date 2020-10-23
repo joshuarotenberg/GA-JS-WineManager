@@ -1,0 +1,66 @@
+@media (min-width: 34em) {
+  .card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (min-width: 48em) {
+  .card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (min-width: 62em) {
+  .card-columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+
+@media (min-width: 75em) {
+  .card-columns {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+  }
+}
+
+.btn {
+  background-color: rebeccapurple;
+  border-color: rebeccapurple;
+  &:hover {
+    border-color: #af83dc;
+    background-color: #af83dc;
+  }
+}
+
+#collection {
+  color: white;
+  .text-muted {
+    color: #2d343b !important;
+  }
+}
+
+.card {
+  background-color: #f8f8f8;
+  color: #000;
+  .price {
+    background-color: rebeccapurple;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 6px;
+    position: relative;
+    top: -30px;
+  }
+  .location {
+    font-size: 14px;
+    position: relative;
+    top: -13px;
+    color: rebeccapurple;
+  }
+}
