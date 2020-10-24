@@ -47,10 +47,10 @@
 
 .card-body {
   position: relative;
-  top: -33px;
+  top: -42px;
   color: #000;
   text-decoration: none;
-  margin-bottom: -33px;
+  margin-bottom: -42px;
 }
 
 .card-body:hover {
@@ -63,12 +63,23 @@
 
 .card img.card-img-top {
   position: relative;
-  top: -32px;
+  top: -40px;
 }
 
 .card .action-menu {
   position: relative;
   z-index: 9999;
+}
+
+.card .action-menu button {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.card .action-menu button:focus {
+  outline: none !important;
 }
 
 .card .action-menu a {

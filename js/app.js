@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     var wineTemplateFunction = Handlebars.compile(wineTemplateHtml);
   
     var wineCard = document.querySelector("#collection");
+    var getCards = document.getElementsByClassName("card");
+
+    var removeButtons = document.getElementsByClassName('delete-wine');
+
+
 
     // grab wines from API    
      axios
@@ -36,12 +41,29 @@ document.addEventListener("DOMContentLoaded", function() {
                 return(bg_hex[Math.floor(Math.random() * bg_hex.length)]);
             }
 
-            let getCards = document.getElementsByClassName("card")
-
-
             for (var i = 0; i < getCards.length; i++) {
-                getCards[i].style.backgroundColor=`${randomHex()}`;
-            }
+                getCards[i].style.backgroundColor=`${randomHex()}`;     
+            }     
+            
+            for (var i = 0; i < removeButtons.length; i++) {
+                removeButtons[i].addEventListener('click',function(){
+                    var baseUrl = "http://myapi-profstream.herokuapp.com/api/46dbf6/wines/";
+                    var wineId = this.id;
+
+                    axios
+                    .delete(`${baseUrl}${wineId}`, { data: { id: this.id } })
+                 
+                }); 
+
+            }  
+           
+
+
+            
+            // .addEventListener('click', function() {
+            //     alert(this.id);
+
+            // });
 
       })
       .catch(function(err) {
@@ -107,23 +129,13 @@ document.addEventListener("DOMContentLoaded", function() {
           });
   
    
+          
+      });
+
+      
+
+      
+
+        
   
   });
-
-  // Delete wine from api
-
-  document
-  wineCard
-  .addEventListener("click", function(e){
-      console.log(e.id)
-
-        // axios
-        // .delete("http://myapi-profstream.herokuapp.com/api/46dbf6/wines", {
-        //     id
-        //     })
-        // .then(response => {
-        //     console.log(response);
-        // });
-  
-  });
-});

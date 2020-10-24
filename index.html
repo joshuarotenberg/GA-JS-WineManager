@@ -25,14 +25,14 @@
           <!-- card cols  -->
            <div class="card-columns" id="collection"> 
              <script id="wine-index-template" type="text/x-handlebars-template">
-                  <div class="card" id="{{id}}">
+                  <div class="card">
                     <div class="action-menu d-flex flex-row justify-content-end pt-3">
-                        <a href="" onclick=`${editWine()}`>
+                        <button class="edit-wine">
                             <i class="text-right far fa-edit"></i>
-                        </a>
-                        <a href="" onclick=`${deleteWine()}`>
+                        </button>
+                        <button class="delete-wine" id="{{ id }}">
                             <i class="text-right far fa-trash-alt mx-2"></i>
-                        </a>
+                        </button>
                     </div>
                     <img class="card-img-top" src="{{ picture }}" alt="Card image cap">
                     <a href="">
