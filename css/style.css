@@ -26,12 +26,13 @@
   }
 }
 
-.btn {
+.btn.btn-purple {
   background-color: rebeccapurple;
   border-color: rebeccapurple;
+  color: white;
 }
 
-.btn:hover {
+.btn.btn-purple:hover {
   border-color: #af83dc;
   background-color: #af83dc;
 }
@@ -44,9 +45,38 @@
   color: #2d343b !important;
 }
 
-.card {
-  background-color: #f8f8f8;
+.card-body {
+  position: relative;
+  top: -33px;
   color: #000;
+  text-decoration: none;
+  margin-bottom: -33px;
+}
+
+.card-body:hover {
+  text-decoration: none !important;
+}
+
+.card a:hover {
+  text-decoration: none !important;
+}
+
+.card img.card-img-top {
+  position: relative;
+  top: -32px;
+}
+
+.card .action-menu {
+  position: relative;
+  z-index: 9999;
+}
+
+.card .action-menu a {
+  line-height: 1px;
+}
+
+.card .action-menu i {
+  color: rebeccapurple;
 }
 
 .card .price {

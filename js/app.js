@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    var wineTemplateHtml = document.getElementById("wine-template").innerHTML;
+    var wineTemplateHtml = document.getElementById("wine-index-template").innerHTML;
     var wineTemplateFunction = Handlebars.compile(wineTemplateHtml);
   
     var wineCard = document.querySelector("#collection");
@@ -109,6 +109,21 @@ document.addEventListener("DOMContentLoaded", function() {
    
   
   });
+
+  // Delete wine from api
+
+  document
+  wineCard
+  .addEventListener("click", function(e){
+      console.log(e.id)
+
+        // axios
+        // .delete("http://myapi-profstream.herokuapp.com/api/46dbf6/wines", {
+        //     id
+        //     })
+        // .then(response => {
+        //     console.log(response);
+        // });
   
-  
+  });
 });

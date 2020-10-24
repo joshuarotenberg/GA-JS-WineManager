@@ -30,9 +30,10 @@
   }
 }
 
-.btn {
+.btn.btn-purple {
   background-color: rebeccapurple;
   border-color: rebeccapurple;
+  color: white;
   &:hover {
     border-color: #af83dc;
     background-color: #af83dc;
@@ -46,9 +47,36 @@
   }
 }
 
-.card {
-  background-color: #f8f8f8;
+.card-body {
+  position: relative;
+  top: -33px;
   color: #000;
+  text-decoration: none;
+  margin-bottom: -33px;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.card {
+  a:hover {
+    text-decoration: none !important;
+  }
+  img.card-img-top {
+    position: relative;
+    top: -32px;
+  }
+
+  .action-menu {
+    position: relative;
+    z-index: 9999;
+    a {
+      line-height: 1px;
+    }
+    i {
+      color: rebeccapurple;
+    }
+  }
   .price {
     background-color: rebeccapurple;
     color: white;
