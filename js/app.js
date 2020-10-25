@@ -44,26 +44,31 @@ document.addEventListener("DOMContentLoaded", function() {
             for (var i = 0; i < getCards.length; i++) {
                 getCards[i].style.backgroundColor=`${randomHex()}`;     
             }     
+
+            //remove wine from api if delete button selected
             
             for (var i = 0; i < removeButtons.length; i++) {
                 removeButtons[i].addEventListener('click',function(){
+                    alert("Are you sure? This can't be undone!");
                     var baseUrl = "http://myapi-profstream.herokuapp.com/api/46dbf6/wines/";
                     var wineId = this.id;
 
                     axios
                     .delete(`${baseUrl}${wineId}`, { data: { id: this.id } })
+                    .then(response => {
+                        console.log(response)
+                        removeWine = document.getElementById(this.id).parentElement
+                        removeWine.parentNode.remove(removeWine);
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        alert('There was an error deleting this wine.')
+                    });
                  
                 }); 
 
             }  
            
-
-
-            
-            // .addEventListener('click', function() {
-            //     alert(this.id);
-
-            // });
 
       })
       .catch(function(err) {
