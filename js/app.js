@@ -2,11 +2,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var wineTemplateHtml = document.getElementById("wine-index-template").innerHTML;
     var wineTemplateFunction = Handlebars.compile(wineTemplateHtml);
+
+    var wineEditTemplateHtml = document.getElementById("wine-edit-template").innerHTML;
+    var wineEditTemplateFunction = Handlebars.compile(wineEditTemplateHtml);
+    var wineEditForm = document.getElementById("wine-edit");
+
   
     var wineCard = document.querySelector("#collection");
     var getCards = document.getElementsByClassName("card");
 
     var removeButtons = document.getElementsByClassName('delete-wine');
+    var editButtons = document.getElementsByClassName('edit-wine');
 
 
 
@@ -68,12 +74,45 @@ document.addEventListener("DOMContentLoaded", function() {
                 }); 
 
             }  
-           
 
-      })
-      .catch(function(err) {
-          console.log(err);
-      });
+            for (var i = 0; i < editButtons.length; i++) {
+                editButtons[i].addEventListener('click',function(){
+                    
+                    var baseUrl = "http://myapi-profstream.herokuapp.com/api/46dbf6/wines/";
+                    var wineId = this.id;
+
+                    axios
+                    .get(`${baseUrl}${wineId}`)
+                    .then(function(response){
+                        let wineEdit = response.data;
+
+                            var wineEditHtml = wineTemplateFunction({
+                                id: wineEdit.id,
+                                name: wineEdit.name,
+                                year: wineEdit.year,
+                                grapes: wineEdit.grapes,
+                                country: wineEdit.country,
+                                region: wineEdit.region,
+                                description: wineEdit.description,
+                                price: wineEdit.price,            
+                                picture: wineEdit.picture               
+                            });
+                
+                            wineEditForm
+                            .innerHTML += wineEditHtml;  
+
+                            
+                      
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+                    });
+
+                });  
+
+            }
+    });
+    
 
       // add new wine; updated api; update cards
       document
