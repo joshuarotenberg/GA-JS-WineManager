@@ -117,36 +117,39 @@
                         <script id="wine-edit-template" type="text/x-handlebars-template">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label class="mb-0" for="name">Name</label>
-                                    <input type="text" class="form-control form-control-sm" id="name" value="{{ name }}">
+                                      <input type="hidden" id="editId" value="{{ id }}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="mb-0" for="year">Year</label>
-                                    <input type="text" class="form-control form-control-sm" id="year" value="{{ year }}">
+                                    <label class="mb-0" for="editName">Name</label>
+                                    <input type="text" class="form-control form-control-sm" id="editName" value="{{ name }}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="mb-0" for="grapes">Grapes</label>
-                                    <input type="text" class="form-control form-control-sm" id="grapes" value="{{ grapes }}">
+                                    <label class="mb-0" for="editYear">Year</label>
+                                    <input type="text" class="form-control form-control-sm" id="editYear" value="{{ year }}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="mb-0" for="country">Country</label>
-                                    <input type="text" class="form-control form-control-sm" id="country" value="{{ country }}">
+                                    <label class="mb-0" for="editGrapes">Grapes</label>
+                                    <input type="text" class="form-control form-control-sm" id="editGrapes" value="{{ grapes }}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="mb-0" for="region">Region</label>
-                                    <input type="text" class="form-control form-control-sm" id="region" value="{{ region }}">
+                                    <label class="mb-0" for="editCountry">Country</label>
+                                    <input type="text" class="form-control form-control-sm" id="editCountry" value="{{ country }}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="mb-0" for="price">Price</label>
-                                    <input type="text" class="form-control form-control-sm" id="price" value="{{ price }}">
+                                    <label class="mb-0" for="editRegion">Region</label>
+                                    <input type="text" class="form-control form-control-sm" id="editRegion" value="{{ region }}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="mb-0" for="picture">Picture</label>
-                                    <input type="text" class="form-control form-control-sm" id="picture" value="{{ picture }}">
+                                    <label class="mb-0" for="editPrice">Price</label>
+                                    <input type="text" class="form-control form-control-sm" id="editPrice" value="{{ price }}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="mb-0" for="description">Description</label>
-                                    <textarea class="form-control" id="description">{{ description }}</textarea>
+                                    <label class="mb-0" for="editPicture">Picture</label>
+                                    <input type="text" class="form-control form-control-sm" id="editPicture" value="{{ picture }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="mb-0" for="editDescription">Description</label>
+                                    <textarea class="form-control" id="editDescription">{{ description }}</textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">

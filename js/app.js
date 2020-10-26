@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var removeButtons = document.getElementsByClassName('delete-wine');
     var editButtons = document.getElementsByClassName('edit-wine');
 
+    var baseUrl = "http://myapi-profstream.herokuapp.com/api/46dbf6/wines/";
+
+
 
 
     // grab wines from API    
@@ -84,10 +87,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     var baseUrl = "http://myapi-profstream.herokuapp.com/api/46dbf6/wines/";
                     var wineId = this.id;
 
+                    // append wine id to element id 
                     wineEditModal = `${wineEditModal}-${wineId}`
                     console.log(wineEditModal);
 
-                    
+                    // update modal id to id with wine id appended
                     document
                     .getElementById("edit-wine-modal")
                     .setAttribute('id', `${wineEditModal}`);
@@ -113,8 +117,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                             wineEditForm
                             .innerHTML += wineEditHtml;  
-
-                          
                            
                     })
                     .catch(error => {
@@ -190,7 +192,68 @@ document.addEventListener("DOMContentLoaded", function() {
           
       });
 
-      
+    // update wine via api; update cards
+    document
+    .getElementById("wine-edit")
+    .addEventListener("submit", function(e){
+        e.preventDefault();
+
+        console.log("Form was updated!");
+        var editId = document.getElementById("editId").value
+        var editName = document.getElementById("editName").value
+        var editYear = document.getElementById("editYear").value
+        var editGrapes = document.getElementById("editGrapes").value
+        var editCountry = document.getElementById("editCountry").value
+        var editRegion = document.getElementById("editRegion").value
+        var editPrice = document.getElementById("editPrice").value
+        var editPicture = document.getElementById("editPicture").value
+        var editDescription = document.getElementById("editDescription").value
+
+        console.log(editYear);
+
+        console.log(`name: ${editName} year: ${editYear} grapes: ${editGrapes}  country: ${editCountry} region: ${editRegion} price: ${editPrice} picture: ${editPicture}  description: ${editDescription}`);
+
+        axios
+        .put(`${baseUrl}${editId}`, {
+            editName,
+            editYear,
+            editGrapes,
+            editCountry,
+            editRegion,
+            editPrice,
+            editPicture,
+            editDescription
+        })
+        .then(function(repsonse) {
+            var updatedWine = repsonse.data
+
+            console.log(updatedWine);
+
+            // close modal with jquery
+            $(`#edit-wine-modal-${editId}`).modal("hide");
+
+            // add new user record to the table using handlebars
+
+            // wineCard
+            // .innerHTML += wineTemplateFunction({
+            //     name: newWine.name,
+            //     year: newWine.year,
+            //     grapes: newWine.grapes,
+            //     country: newWine.country,
+            //     region: newWine.region,
+            //     price: newWine.price,
+            //     picture: newWine.picture,
+            //     description: newWine.description
+            // });
+
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+
+
+        
+    });  
 
       
 
