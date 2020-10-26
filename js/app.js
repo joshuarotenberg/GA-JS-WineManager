@@ -209,12 +209,10 @@ document.addEventListener("DOMContentLoaded", function() {
         var editPicture = document.getElementById("editPicture").value
         var editDescription = document.getElementById("editDescription").value
 
-        console.log(editYear);
-
         console.log(`name: ${editName} year: ${editYear} grapes: ${editGrapes}  country: ${editCountry} region: ${editRegion} price: ${editPrice} picture: ${editPicture}  description: ${editDescription}`);
 
         axios
-        .put(`${baseUrl}${editId}`, {
+        .put(`${baseUrl}${editId}?name=${editName}&year=${editYear}&grapes=${editGrapes}&country=${editCountry}&region=${editRegion}&price=${editPrice}&picture=${editPicture}&description=${editDescription}`, {
             editName,
             editYear,
             editGrapes,
@@ -232,19 +230,19 @@ document.addEventListener("DOMContentLoaded", function() {
             // close modal with jquery
             $(`#edit-wine-modal-${editId}`).modal("hide");
 
-            // add new user record to the table using handlebars
+            //updated wine in dom not working
 
-            // wineCard
-            // .innerHTML += wineTemplateFunction({
-            //     name: newWine.name,
-            //     year: newWine.year,
-            //     grapes: newWine.grapes,
-            //     country: newWine.country,
-            //     region: newWine.region,
-            //     price: newWine.price,
-            //     picture: newWine.picture,
-            //     description: newWine.description
-            // });
+            wineTemplateHtml
+            .innerHTML += wineTemplateFunction({
+                name: updatedWine.name,
+                year: updatedWine.year,
+                grapes: updatedWine.grapes,
+                country: updatedWine.country,
+                region: updatedWine.region,
+                price: updatedWine.price,
+                picture: updatedWine.picture,
+                description: updatedWine.description
+            });
 
         })
         .catch(function(err) {
