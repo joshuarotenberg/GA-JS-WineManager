@@ -27,7 +27,7 @@
              <script id="wine-index-template" type="text/x-handlebars-template">
                   <div class="card">
                     <div class="action-menu d-flex flex-row justify-content-end pt-3">
-                        <button class="edit-wine" id="{{ id }}">
+                        <button class="edit-wine" id="{{ id }}"  data-toggle="modal" data-target="#edit-wine-modal-{{ id }}">
                             <i class="text-right far fa-edit"></i>
                         </button>
                         <button class="delete-wine" id="{{ id }}">
@@ -109,77 +109,55 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add New Wine</h4>
+                        <h4 class="modal-title">Edit Wine</h4>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <form id="edit-wine">
+                    <form id="wine-edit">
                         <script id="wine-edit-template" type="text/x-handlebars-template">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label class="mb-0" for="name">Name</label>
-                                    <input type="text" class="form-control form-control-sm" id="name" value="{{wineEdit.name}}">
+                                    <input type="text" class="form-control form-control-sm" id="name" value="{{ name }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-0" for="year">Year</label>
-                                    <input type="text" class="form-control form-control-sm" id="year">
+                                    <input type="text" class="form-control form-control-sm" id="year" value="{{ year }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-0" for="grapes">Grapes</label>
-                                    <input type="text" class="form-control form-control-sm" id="grapes">
+                                    <input type="text" class="form-control form-control-sm" id="grapes" value="{{ grapes }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-0" for="country">Country</label>
-                                    <input type="text" class="form-control form-control-sm" id="country">
+                                    <input type="text" class="form-control form-control-sm" id="country" value="{{ country }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-0" for="region">Region</label>
-                                    <input type="text" class="form-control form-control-sm" id="region">
+                                    <input type="text" class="form-control form-control-sm" id="region" value="{{ region }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-0" for="price">Price</label>
-                                    <input type="text" class="form-control form-control-sm" id="price">
+                                    <input type="text" class="form-control form-control-sm" id="price" value="{{ price }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-0" for="picture">Picture</label>
-                                    <input type="text" class="form-control form-control-sm" id="picture">
+                                    <input type="text" class="form-control form-control-sm" id="picture" value="{{ picture }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-0" for="description">Description</label>
-                                    <textarea class="form-control" id="description"></textarea>
+                                    <textarea class="form-control" id="description">{{ description }}</textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-purple">Save Wine</button>
+                                <button type="submit" class="btn btn-purple">Update Wine</button>
                             </div>
                             </div><!-- /.modal-content -->
                         </script>
                     </form>
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
-         <!--Show Wine Modal-->
-         <div class="modal fade wineShow" id="show-wine-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div><!-- /.modal -->
 
       
 

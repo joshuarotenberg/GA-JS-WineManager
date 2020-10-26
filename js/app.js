@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var wineEditTemplateHtml = document.getElementById("wine-edit-template").innerHTML;
     var wineEditTemplateFunction = Handlebars.compile(wineEditTemplateHtml);
     var wineEditForm = document.getElementById("wine-edit");
+    var wineEditModal =  document.getElementById("edit-wine-modal").id;
+
 
   
     var wineCard = document.querySelector("#collection");
@@ -75,18 +77,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
             }  
 
+             //Edit Wine 
             for (var i = 0; i < editButtons.length; i++) {
                 editButtons[i].addEventListener('click',function(){
                     
                     var baseUrl = "http://myapi-profstream.herokuapp.com/api/46dbf6/wines/";
                     var wineId = this.id;
 
+                    wineEditModal = `${wineEditModal}-${wineId}`
+                    console.log(wineEditModal);
+
+                    
+                    document
+                    .getElementById("edit-wine-modal")
+                    .setAttribute('id', `${wineEditModal}`);
+                    
+
+                    // Grab wine that should be edited
                     axios
                     .get(`${baseUrl}${wineId}`)
                     .then(function(response){
                         let wineEdit = response.data;
 
-                            var wineEditHtml = wineTemplateFunction({
+                            var wineEditHtml = wineEditTemplateFunction({
                                 id: wineEdit.id,
                                 name: wineEdit.name,
                                 year: wineEdit.year,
@@ -101,11 +114,12 @@ document.addEventListener("DOMContentLoaded", function() {
                             wineEditForm
                             .innerHTML += wineEditHtml;  
 
-                            
-                      
+                          
+                           
                     })
-                    .catch(function(err) {
-                        console.log(err);
+                    .catch(error => {
+                        console.log(error)
+                        alert(error)
                     });
 
                 });  
