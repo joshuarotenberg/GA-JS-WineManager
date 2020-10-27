@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // grab wines from API    
      axios
-      .get("http://myapi-profstream.herokuapp.com/api/46dbf6/wines")
+      .get(baseUrl)
       .then(function(response){
           let data = response.data;
           for(wine of data) {
@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
               
           }
+          
           
             // add random earthtone to card background
              
@@ -67,8 +68,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     axios
                     .delete(`${baseUrl}${wineId}`, { data: { id: this.id } })
                     .then(response => {
-                        console.log(response)
                         removeWine = document.getElementById(this.id).parentElement
+                        console.log(removeWine);
                         removeWine.parentNode.remove(removeWine);
                     })
                     .catch(error => {
@@ -84,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
             for (var i = 0; i < editButtons.length; i++) {
                 editButtons[i].addEventListener('click',function(){
                     
-                    var baseUrl = "http://myapi-profstream.herokuapp.com/api/46dbf6/wines/";
                     var wineId = this.id;
 
                     // append wine id to element id 
@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document
       .getElementById("add-wine")
       .addEventListener("submit", function(e){
+
           e.preventDefault();
   
           console.log("Form was submitted!");
@@ -192,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function() {
           
       });
 
-    // update wine via api; update cards
+    // update wine via api; update cards with response
     document
     .getElementById("wine-edit")
     .addEventListener("submit", function(e){
@@ -232,17 +233,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
             //updated wine in dom not working
 
-            wineTemplateHtml
-            .innerHTML += wineTemplateFunction({
-                name: updatedWine.name,
-                year: updatedWine.year,
-                grapes: updatedWine.grapes,
-                country: updatedWine.country,
-                region: updatedWine.region,
-                price: updatedWine.price,
-                picture: updatedWine.picture,
-                description: updatedWine.description
-            });
+            // wineTemplateHtml
+            // .innerHTML += wineTemplateFunction({
+            //     name: updatedWine.name,
+            //     year: updatedWine.year,
+            //     grapes: updatedWine.grapes,
+            //     country: updatedWine.country,
+            //     region: updatedWine.region,
+            //     price: updatedWine.price,
+            //     picture: updatedWine.picture,
+            //     description: updatedWine.description
+            // });
+
+            // console.log(wineTemplateHtml);
 
         })
         .catch(function(err) {
