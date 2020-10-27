@@ -44,3 +44,7 @@ When delete icon button is clicked. `.delete` request is made to API. on success
 When edit icon is clicked. Edit form modal opens. `.get` request grabs all data from API and pre-populates form of respective card. Upon submission: updated data is passed to API via `.put` request.
 
 > \*\* UI didn't require viewing a wine, as it had all the info. The edit action pops a form based on unique wine data. Thought this was more advanced. ;)
+
+## Challenges
+
+- Was unable to inject updated API response via handlebars.
