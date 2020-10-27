@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // grab wines from API    
      axios
-      .get(baseUrl)
+      .get("http://myapi-profstream.herokuapp.com/api/46dbf6/wines/")
       .then(function(response){
           let data = response.data;
           for(wine of data) {
@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
             for (var i = 0; i < editButtons.length; i++) {
                 editButtons[i].addEventListener('click',function(){
                     
+                    var baseUrl = "http://myapi-profstream.herokuapp.com/api/46dbf6/wines/";
                     var wineId = this.id;
 
                     // append wine id to element id 
